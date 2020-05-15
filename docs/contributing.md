@@ -287,7 +287,7 @@ If you are going to create a new data source care for the wording of your Go fun
 Because the data source returns more than one group object from Azure DevOps
 
 * Data source name `azuredevops_groups`
-* Go function name `func dataGroups() *schema.Resource`
+* Go function name `func DataGroups() *schema.Resource`
 
 **Reference:** [Terraform Data Source Names](https://www.terraform.io/docs/extend/best-practices/naming.html#data-source-names)
 

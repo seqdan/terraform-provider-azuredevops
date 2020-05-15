@@ -2,6 +2,7 @@ package azuredevops
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	azdo "github.com/microsoft/terraform-provider-azuredevops/azuredevops/internal"
 	"github.com/microsoft/terraform-provider-azuredevops/azuredevops/utils/config"
 )
 
@@ -9,27 +10,27 @@ import (
 func Provider() *schema.Provider {
 	p := &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
-			"azuredevops_resource_authorization":     resourceResourceAuthorization(),
-			"azuredevops_build_definition":           resourceBuildDefinition(),
-			"azuredevops_project":                    resourceProject(),
-			"azuredevops_variable_group":             resourceVariableGroup(),
-			"azuredevops_serviceendpoint_azurerm":    resourceServiceEndpointAzureRM(),
-			"azuredevops_serviceendpoint_bitbucket":  resourceServiceEndpointBitBucket(),
-			"azuredevops_serviceendpoint_dockerhub":  resourceServiceEndpointDockerHub(),
-			"azuredevops_serviceendpoint_github":     resourceServiceEndpointGitHub(),
-			"azuredevops_serviceendpoint_kubernetes": resourceServiceEndpointKubernetes(),
-			"azuredevops_git_repository":             resourceGitRepository(),
-			"azuredevops_user_entitlement":           resourceUserEntitlement(),
-			"azuredevops_group_membership":           resourceGroupMembership(),
-			"azuredevops_agent_pool":                 resourceAzureAgentPool(),
-			"azuredevops_group":                      resourceGroup(),
+			"azuredevops_resource_authorization":     azdo.ResourceResourceAuthorization(),
+			"azuredevops_build_definition":           azdo.ResourceBuildDefinition(),
+			"azuredevops_project":                    azdo.ResourceProject(),
+			"azuredevops_variable_group":             azdo.ResourceVariableGroup(),
+			"azuredevops_serviceendpoint_azurerm":    azdo.ResourceServiceEndpointAzureRM(),
+			"azuredevops_serviceendpoint_bitbucket":  azdo.ResourceServiceEndpointBitBucket(),
+			"azuredevops_serviceendpoint_dockerhub":  azdo.ResourceServiceEndpointDockerHub(),
+			"azuredevops_serviceendpoint_github":     azdo.ResourceServiceEndpointGitHub(),
+			"azuredevops_serviceendpoint_kubernetes": azdo.ResourceServiceEndpointKubernetes(),
+			"azuredevops_git_repository":             azdo.ResourceGitRepository(),
+			"azuredevops_user_entitlement":           azdo.ResourceUserEntitlement(),
+			"azuredevops_group_membership":           azdo.ResourceGroupMembership(),
+			"azuredevops_agent_pool":                 azdo.ResourceAzureAgentPool(),
+			"azuredevops_group":                      azdo.ResourceGroup(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
-			"azuredevops_group":            dataGroup(),
-			"azuredevops_project":          dataProject(),
-			"azuredevops_projects":         dataProjects(),
-			"azuredevops_git_repositories": dataGitRepositories(),
-			"azuredevops_users":            dataUsers(),
+			"azuredevops_group":            azdo.DataGroup(),
+			"azuredevops_project":          azdo.DataProject(),
+			"azuredevops_projects":         azdo.DataProjects(),
+			"azuredevops_git_repositories": azdo.DataGitRepositories(),
+			"azuredevops_users":            azdo.DataUsers(),
 		},
 		Schema: map[string]*schema.Schema{
 			"org_service_url": {
