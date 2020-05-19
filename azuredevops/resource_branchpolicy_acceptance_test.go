@@ -59,10 +59,10 @@ func TestAccAzureDevOpsBranchPolicy_CreateAndUpdate(t *testing.T) {
 				Config: getHCL(opts2),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttrSet(minReviewerTfNode, "id"),
-					resource.TestCheckResourceAttr(minReviewerTfNode, "blocking", fmt.Sprintf("%t", opts2.minReviewerOptions.blocking)),
-					resource.TestCheckResourceAttr(minReviewerTfNode, "enabled", fmt.Sprintf("%t", opts2.minReviewerOptions.enabled)),
-					resource.TestCheckResourceAttr(buildVlidationTfNode, "enabled", fmt.Sprintf("%t", opts2.buildValidationOptions.enabled)),
-					resource.TestCheckResourceAttr(buildVlidationTfNode, "enabled", fmt.Sprintf("%t", opts2.buildValidationOptions.enabled)),
+					resource.TestCheckResourceAttr(minReviewerTfNode, "blocking", "false"),
+					resource.TestCheckResourceAttr(minReviewerTfNode, "enabled", "false"),
+					resource.TestCheckResourceAttr(buildVlidationTfNode, "enabled", "false"),
+					resource.TestCheckResourceAttr(buildVlidationTfNode, "enabled", "false"),
 				),
 			}, {
 				ResourceName:      minReviewerTfNode,
