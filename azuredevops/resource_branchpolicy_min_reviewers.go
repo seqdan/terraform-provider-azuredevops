@@ -24,8 +24,8 @@ type minReviewerPolicySettings struct {
 
 func resourceBranchPolicyMinReviewers() *schema.Resource {
 	resource := branchpolicy.GenBasePolicyResource(&branchpolicy.PolicyCrudArgs{
-		FlattenFunc: flattenFunc,
-		ExpandFunc:  expandFunc,
+		FlattenFunc: minReviewersFlattenFunc,
+		ExpandFunc:  minReviewersExpandFunc,
 		PolicyType:  branchpolicy.MinReviewerCount,
 	})
 
@@ -43,7 +43,7 @@ func resourceBranchPolicyMinReviewers() *schema.Resource {
 	return resource
 }
 
-func flattenFunc(d *schema.ResourceData, policyConfig *policy.PolicyConfiguration, projectID *string) error {
+func minReviewersFlattenFunc(d *schema.ResourceData, policyConfig *policy.PolicyConfiguration, projectID *string) error {
 	err := branchpolicy.BaseFlattenFunc(d, policyConfig, projectID)
 	if err != nil {
 		return err
@@ -69,7 +69,7 @@ func flattenFunc(d *schema.ResourceData, policyConfig *policy.PolicyConfiguratio
 	return nil
 }
 
-func expandFunc(d *schema.ResourceData, typeID uuid.UUID) (*policy.PolicyConfiguration, *string, error) {
+func minReviewersExpandFunc(d *schema.ResourceData, typeID uuid.UUID) (*policy.PolicyConfiguration, *string, error) {
 	policyConfig, projectID, err := branchpolicy.BaseExpandFunc(d, typeID)
 	if err != nil {
 		return nil, nil, err
