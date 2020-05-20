@@ -103,7 +103,7 @@ func flattenSettings(d *schema.ResourceData, policyConfig *policy.PolicyConfigur
 		return nil, fmt.Errorf("Unable to marshal policy settings into JSON: %+v", err)
 	}
 
-_ = json.Unmarshal(policyAsJSON, &policySettings)
+	_ = json.Unmarshal(policyAsJSON, &policySettings)
 	scopes := make([]interface{}, len(policySettings.Scopes))
 	for index, scope := range policySettings.Scopes {
 		scopes[index] = map[string]interface{}{
